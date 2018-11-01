@@ -18,7 +18,17 @@ jobs:
     trigger: true
   - task: use-docker-image-task
     privileged: true
-    file: git-concourse-build-docker-image/ci/tasks/tasks.yml
+    config:
+    - platform: linux
+      image_resource:
+      - type: docker-image
+        source:
+        - repository: {{docker-image}}
+          tag: "latest"
+      inputs:
+      - name: git-concourse-build-docker-image
+      run:
+        path: ci/tasks/package.sh
 
 resources:
 - name: git-concourse-build-docker-image
