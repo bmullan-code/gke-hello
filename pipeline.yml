@@ -18,7 +18,7 @@ jobs:
     trigger: true
   - task: use-docker-image-task
     privileged: true
-    file: git-concourse-build-docker-image/ci/tasks/tasks.yml
+    file: ci/tasks/tasks.yml
 
 resources:
 - name: git-concourse-build-docker-image
