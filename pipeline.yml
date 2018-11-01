@@ -27,7 +27,13 @@ jobs:
       - name: git-concourse-build-docker-image
         path: ""
       run:
-        path: ci/tasks/package.sh
+        path: sh
+        args: 
+        - -c
+        - |
+          #!/bin/bash
+          pwd
+          ls -R
 
 resources:
 - name: git-concourse-build-docker-image
