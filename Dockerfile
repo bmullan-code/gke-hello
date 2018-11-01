@@ -1,7 +1,8 @@
 FROM node:8
+COPY .git/short_ref version.txt
 WORKDIR /usr/src/app
 COPY package.json .
-COPY ../../../.git/short_ref version.txt
+
 RUN npm install
 COPY . .
 EXPOSE 808
