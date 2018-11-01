@@ -13,12 +13,9 @@ jobs:
   public: true
   serial: true
   plan:
-
   - get: git-concourse-build-docker-image
     passed: [build-docker-image]
     trigger: true
-  - get: docker-image
-    passed: [build-docker-image]
   - task: use-docker-image-task
     privileged: true
     file: git-concourse-build-docker-image/ci/tasks/tasks.yml
