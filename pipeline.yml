@@ -9,6 +9,17 @@ jobs:
     params:
       build: git-concourse-build-docker-image
 
+- name: use-docker-image
+  public: true
+  serial: true
+  plan:
+  - get: docker-image
+    passed: [build-docker-image]
+    trigger: true
+  - task: use-docker-image-task
+    privileged: true
+    file: source-code/ci/tasks/tasks.yml
+
 resources:
 - name: git-concourse-build-docker-image
   type: git
