@@ -7,8 +7,6 @@ image_resource:
     tag: "latest"
 
 inputs:
-- name: input
-outputs:
-- name: output
+- name: git-concourse-build-docker-image
 run:
-  path: source-code/ci/tasks/package.sh
+  path: ci/tasks/package.sh
